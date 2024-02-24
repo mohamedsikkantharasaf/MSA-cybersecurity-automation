@@ -15,7 +15,7 @@ print("\033[94mEnter no:3 for SHA256\033[0m")
 print("\033[94mEnter no:4 for SHA224\033[0m")
 print("\033[94mEnter no:5 for SHA512\033[0m")
 print("\033[94mEnter no:6 for SHA384\033[0m")
-print("\033[94mEnter no:7 for CRC32 \033[0m")
+print("\033[94mEnter no:7 for CRC32 \033[0m\n")
 
 hash_type = int(input("Enter the Hash Type (e.g., CRC32):"))
 hash_value = str(input("Enter the Hash Value (as a hexadecimal string):"))
@@ -44,7 +44,7 @@ try:
     with open(wordlist_file_path, 'r', encoding='utf-8') as local_wordlist_file:
         word_list = local_wordlist_file.read().splitlines()
 except UnicodeDecodeError:
-    print("Error decoding as UTF-8. Trying to decode with errors ignored.")
+    print("\n Error decoding as UTF-8. Trying to decode with errors ignored.")
     with open(wordlist_file_path, 'r', encoding='utf-8', errors='ignore') as local_wordlist_file:
         word_list = local_wordlist_file.read().splitlines()
 

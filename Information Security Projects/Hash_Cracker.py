@@ -6,7 +6,9 @@ import os
 import binascii
 
 ascii_banner = pyfiglet.print_figlet("Hash Cracker", colors="Yellow", font="big")
-print("\033[91mAlgorithms Available: MD5 | SHA1 | SHA224 | SHA384 | SHA512 | SHA256 | \033[0m")
+
+print("\033[91mAlgorithms Available: MD5 | SHA1 | SHA224 | SHA384 | SHA512 | SHA256 | \033[0m\n")
+
 print("\033[94mEnter no:1 for MD5\033[0m")
 print("\033[94mEnter no:2 for SHA1\033[0m")
 print("\033[94mEnter no:3 for SHA256\033[0m")
@@ -38,8 +40,13 @@ if not os.path.exists(wordlist_file_path):
         sys.exit()
 
 # Read the wordlist from the local file
-with open(wordlist_file_path, 'r') as local_wordlist_file:
-    word_list = local_wordlist_file.read().splitlines()
+try:
+    with open(wordlist_file_path, 'r', encoding='utf-8') as local_wordlist_file:
+        word_list = local_wordlist_file.read().splitlines()
+except UnicodeDecodeError:
+    print("Error decoding as UTF-8. Trying to decode with errors ignored.")
+    with open(wordlist_file_path, 'r', encoding='utf-8', errors='ignore') as local_wordlist_file:
+        word_list = local_wordlist_file.read().splitlines()
 
 for word in word_list:
     if hash_type == 1:

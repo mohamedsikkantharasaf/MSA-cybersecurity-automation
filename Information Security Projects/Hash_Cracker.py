@@ -93,3 +93,4 @@ for word in word_list:
 
 else:
     print(f"Hash is not Found in provide word list :\033[1;32m {hash_value}\n")
+
